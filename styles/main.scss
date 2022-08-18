@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+//Menu
+.menu-btn span {
+    background: #000;
+    border-radius:10px;
+    height: 3px;
+    margin: 3px 10px;
+    transition: .4s  cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.menu-btn.clicked {
+    .line1 {
+        transform-origin:bottom;
+        transform:rotatez(45deg) translate(3px, 0px);
+    }
+    .line2 {
+        transform-origin:bottom;
+        transform:rotatez(-45deg) translate(0px, 1px);
+        @media (min-width: 640px) {
+        width: 95%;
+        }
+    }
+    .line3 {
+        transform-origin:bottom;
+        transform:rotatez(45deg) translate(2px, -9px);
+        @media (min-width: 640px) {
+        transform:rotatez(45deg) translate(3px, -8px);
+        }
+    }
+}
