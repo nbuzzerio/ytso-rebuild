@@ -34,3 +34,6 @@ yarn-error.log*
 
 # logs
 /logs
+
+youtube.config.js
+keys*

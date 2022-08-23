@@ -3,7 +3,7 @@ const endpoints = require("../routes/example");
 const auth = require("../routes/auth");
 const users = require("../routes/users");
 const groups = require("../routes/groups");
-const products = require("../routes/products");
+const search = require("../routes/search");
 const error = require("../middleware/error");
 
 module.exports = function (server) {
@@ -16,6 +16,6 @@ module.exports = function (server) {
   server.use("/api/auth", auth);
   server.use("/api/users", users);
   server.use("/api/groups", groups);
-  server.use("/api/products", products);
+  server.use("/api/search", search);
   server.use(error);
 };
