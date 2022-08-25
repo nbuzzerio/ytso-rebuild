@@ -1,5 +1,4 @@
 const express = require("express");
-const endpoints = require("../routes/example");
 const auth = require("../routes/auth");
 const users = require("../routes/users");
 const groups = require("../routes/groups");
@@ -12,7 +11,7 @@ module.exports = function (server) {
     res.set("Content-Security-Policy", "script-src 'self' 'unsafe-eval';");
     return next();
   });
-  server.use("/api/endpoints-template", endpoints);
+  
   server.use("/api/auth", auth);
   server.use("/api/users", users);
   server.use("/api/groups", groups);

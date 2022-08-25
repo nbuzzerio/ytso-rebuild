@@ -28,6 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     "jest.setup.js", 
-    "server/index.js"  ],
-    "exclude": ["node_modules", "cypress", "./cypress.config.ts"]
+    "server/index.js", 
+    "server/routes/search.js"  
+  ],
+  "exclude": ["node_modules", "cypress", "./cypress.config.ts"]
 }

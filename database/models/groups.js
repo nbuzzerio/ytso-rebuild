@@ -35,7 +35,7 @@ groupsSchema.methods.generateInviteKey = function (temp) {
   return encrypted;
 };
 
-const Groups = mongoose.model("groups", groupsSchema);
+const Groups = mongoose.model("YTSO-groups", groupsSchema);
 
 function validate(groups) {
   const schema = Joi.object({

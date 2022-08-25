@@ -5,16 +5,25 @@ const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 const asyncMiddleware = require("../middleware/async");
 const validateObjectId = require("../middleware/validateObjectId");
+require('dotenv').config()
 
-const CONFIG = require("../../config/youtube.config");
+const { google } = require("googleapis");
 
 router.get(
   "/",
   asyncMiddleware(async (req, res) => {
-    const jwt = require("jsonwebtoken");
 
-    const { google } = require("googleapis");
-    res.send(google)
+    const youtube = google.youtube('v3');
+
+    youtube.search.list({
+      auth: process.env.YOUTUBE_API_KEY,
+      part: 'snippet',
+      q:'',
+      type: 'channel'
+    }).then((response) => {
+      console.log(response.data.items)
+      res.send(response.data.items)
+    })
   })
 );
 
