@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import searchSchema from "../../validations/searchSchema";
 import { useAuth } from "../AuthContext/AuthContext";
 
@@ -10,6 +10,7 @@ type Props = yup.InferType<typeof searchSchema>;
 
 const SearchForm: NextPage<{ setSearch }> = ({ setSearch }) => {
   const auth = useAuth();
+  const [subsNextPageToken, setSubsNextPageToken] = useState('');
 
   useEffect(() => {
     return () => {};
@@ -18,13 +19,12 @@ const SearchForm: NextPage<{ setSearch }> = ({ setSearch }) => {
   function onSubmit(data) {
     console.log("data:", data.search);
 
-    fetch(`http://localhost:3000/api/search`, {
-      method: "POST",
+    fetch(`http://localhost:3000/api/search?q=${data.search}${subsNextPageToken ? `&&nextPageToken=${subsNextPageToken}` : ''}`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         "x-auth-token": auth,
       },
-      body: JSON.stringify(data),
     })
       .then((res) => {
         if (!res.ok) console.log("Respons status: ", res.status, res);
@@ -33,7 +33,8 @@ const SearchForm: NextPage<{ setSearch }> = ({ setSearch }) => {
       .then((data) => {
         if (data.error) console.error(data.error);
         else {
-          setSearch(data);
+          setSearch(data.items);
+          setSubsNextPageToken(data.nextPageToken);
         }
       })
       .catch((er) => console.log(er));

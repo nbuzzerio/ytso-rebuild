@@ -9,21 +9,23 @@ require("dotenv").config();
 
 const { google } = require("googleapis");
 
-router.post(
+router.get(
   "/",
   auth,
   asyncMiddleware(async (req, res) => {
     const youtube = google.youtube("v3");
-
+    console.log(req.query)
     youtube.search
       .list({
         auth: process.env.YOUTUBE_API_KEY,
         part: "snippet",
-        q: req.body.search,
+        q: req.query.q,
         type: "channel",
+        pageToken: req.query.nextPageToken,
       })
       .then((response) => {
-        res.send(response.data.items);
+        console.log('#############################', response.data)
+        res.send({items: response.data.items, nextPageToken: response.data.nextPageToken});
       })
       .catch((err) => res.send(err));
   })
