@@ -12,7 +12,7 @@ export function useUpdateAuth() {
 }
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [auth, setAuth] = useState('')
+  const [auth, setAuth] = useState('missing')
 
   function handleAuth(token: string) {
     setAuth(token)

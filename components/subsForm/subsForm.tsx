@@ -8,24 +8,30 @@ import { useAuth } from "../AuthContext/AuthContext";
 
 type Props = yup.InferType<typeof searchSchema>;
 
-const SearchForm: NextPage<{ setSearch }> = ({ setSearch }) => {
+const SearchForm: NextPage<{ subsSearch; setSearch }> = ({
+  subsSearch,
+  setSearch,
+}) => {
   const auth = useAuth();
-  const [subsNextPageToken, setSubsNextPageToken] = useState('');
+  const [subsNextPageToken, setSubsNextPageToken] = useState("");
 
   useEffect(() => {
     return () => {};
   }, []);
 
   function onSubmit(data) {
-    console.log("data:", data.search);
-
-    fetch(`http://localhost:3000/api/search?q=${data.search}${subsNextPageToken ? `&&nextPageToken=${subsNextPageToken}` : ''}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-auth-token": auth,
-      },
-    })
+    fetch(
+      `http://localhost:3000/api/search?q=${data.search}${
+        subsNextPageToken ? `&&nextPageToken=${subsNextPageToken}` : ""
+      }`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": auth,
+        },
+      }
+    )
       .then((res) => {
         if (!res.ok) console.log("Respons status: ", res.status, res);
         return res.json();
@@ -33,7 +39,7 @@ const SearchForm: NextPage<{ setSearch }> = ({ setSearch }) => {
       .then((data) => {
         if (data.error) console.error(data.error);
         else {
-          setSearch(data.items);
+          setSearch([...subsSearch, ...data.items]);
           setSubsNextPageToken(data.nextPageToken);
         }
       })
@@ -62,6 +68,10 @@ const SearchForm: NextPage<{ setSearch }> = ({ setSearch }) => {
             maxLength={255}
             placeholder="Search"
             {...register("search")}
+            onChange={() => {
+              setSubsNextPageToken("");
+              setSearch([]);
+            }}
             className={`p-3 ${errors["name"] ? "bg-red-100" : ""}`}
           />
           <input

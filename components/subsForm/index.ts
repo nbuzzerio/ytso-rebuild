@@ -1,1 +1,1 @@
-export { default } from './subsForm'
+export { default } from './SubsForm'
