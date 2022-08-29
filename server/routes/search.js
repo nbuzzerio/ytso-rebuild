@@ -12,7 +12,7 @@ router.get(
   auth,
   asyncMiddleware(async (req, res) => {
     const youtube = google.youtube("v3");
-    console.log(req.query);
+
     youtube.search
       .list({
         auth: process.env.YOUTUBE_API_KEY,

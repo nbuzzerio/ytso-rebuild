@@ -22,6 +22,43 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 1024,
   },
+  categories: {
+    type: [
+      {
+        categoryName: {
+          type: String,
+        },
+        subs: {
+          type: [
+            {
+              subName: {
+                type: String,
+              },
+              channelId: {
+                type: String,
+              },
+              channelDesc: {
+                type: String,
+              },
+              channelThumbnails: {
+                default: {
+                  type: String,
+                },
+                medium: {
+                  type: String,
+                },
+                high: {
+                  type: String,
+                },
+              },
+            },
+          ],
+          sparse: true,
+        },
+      },
+    ],
+    sparse: true,
+  },
   subs: {
     type: [
       {

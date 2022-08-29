@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/components/AuthContext/AuthContext";
-import SubsForm from "@/components/subsForm";
+import SubsForm from "@/components/SubsForm";
 import { useSubs, useUpdateSubs } from "@/components/SubsContext/SubsContext";
 import SubsList from "@/components/SubsList";
 
@@ -14,27 +14,7 @@ export default function Subs() {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("auth: ", auth);
     if (!auth) router.push("/login");
-
-    fetch(`http://localhost:3000/api/subs`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-auth-token": auth,
-      },
-    })
-      .then((res) => {
-        if (!res.ok) console.log("Respons status: ", res.status, res);
-        return res.json();
-      })
-      .then((data) => {
-        if (data.error) console.error(data.error);
-        else {
-          setSubs(data);
-        }
-      })
-      .catch((er) => console.log(er));
 
     return () => {};
   }, []);
@@ -49,16 +29,6 @@ export default function Subs() {
       )
     ) {
       const sub = subsSearch[Number(e.target.id.slice(10))];
-      const subLog = {
-        subName: sub.snippet.channelTitle,
-        channelId: sub.id.channelId,
-        channelDesc: sub.snippet.description,
-        channelThumbnails: {
-          default: sub.snippet.thumbnails.default.url,
-          medium: sub.snippet.thumbnails.medium.url,
-          high: sub.snippet.thumbnails.high.url,
-        },
-      };
 
       fetch(`http://localhost:3000/api/subs`, {
         method: "POST",
@@ -88,9 +58,7 @@ export default function Subs() {
           }
         })
         .catch((er) => console.log(er));
-    } else {
-      console.log("testing testing");
-    }
+    } else {}
   };
 
   const searchSubsList = subsSearch.map((sub, i) => {
@@ -129,7 +97,7 @@ export default function Subs() {
         <h1 className="text-7xl text-red-600 text-center py-10">
           Subscriptions
         </h1>
-        <SubsList />
+        <SubsList category={null} setCategory={null} />
         <div className="form-wrapper flex flex-col items-center mx-auto">
           <SubsForm subsSearch={subsSearch} setSearch={setSubsSearch} />
           {searchSubsList}
