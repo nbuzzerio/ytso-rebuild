@@ -37,3 +37,4 @@ yarn-error.log*
 
 youtube.config.js
 keys*
+package-lock.json

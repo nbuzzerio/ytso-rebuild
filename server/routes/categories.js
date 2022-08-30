@@ -109,6 +109,28 @@ router.delete(
 
     try {
       const user = await User.findById(decoded._id);
+      user.categories = user.categories.filter(
+        (category) => category.categoryName !== req.body.categoryName
+      );
+      await user.save();
+      res.send(user.categories);
+    } catch (ex) {
+      for (field in ex.errors) {
+        console.log(ex.errors[field].message);
+      }
+    }
+  })
+);
+
+router.delete(
+  "/sub",
+  auth,
+  asyncMiddleware(async (req, res) => {
+    const token = req.header("x-auth-token");
+    const decoded = jwt.verify(token, process.env.jwtPrivateKey);
+
+    try {
+      const user = await User.findById(decoded._id);
       const category = user.categories.filter((category) =>
         category._id.equals(req.body.categoryId)
       );

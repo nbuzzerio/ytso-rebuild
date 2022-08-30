@@ -68,40 +68,41 @@ export default function Categories() {
 
   const categoriesList = categories.map((category, i) => {
     return (
-      <Link
-        href={{
-          pathname: `/categories/${category.categoryName
-            .toLowerCase()
-            .replace(/ /g, "-")}`,
-          query: { id: category._id },
-        }}
-        key={i}
+      <div
+        className={`categories-wrapper relative flex flex-col items-center bg-gray gap-12 p-5 border border-black my-10 bg-white/50 transition duration-200 cursor-pointer group ${
+          deleteCategories
+            ? "hover:bg-black  border-2 border-red-600 hover:text-red-600 pointer-events-auto z-10"
+            : ""
+        }`}
       >
-        <a>
-          <div
-            className={`categories-wrapper relative flex flex-col items-center bg-gray gap-12 p-5 border border-black my-10 bg-white/50 transition duration-200 cursor-pointer group ${
-              deleteCategories
-                ? "hover:bg-black  border-2 border-red-600 hover:text-red-600"
-                : ""
-            }`}
-            id={`categories-${i}`}
-            onClick={(e) => {
-              if (deleteCategories) handleDelete(e);
-            }}
-          >
-            <div
-              className={`delete-overlay w-full h-full bg-black/75 absolute top-0 left-0 hidden capitalize cursor-pointer ${
-                deleteCategories ? "group-hover:flex" : ""
-              } justify-center items-center text-3xl text-red-600 pointer-events-none`}
-            >
-              delete
-            </div>
-            <h2 className="sub-title text-red text-3xl">
-              {category.categoryName}
-            </h2>
-          </div>
-        </a>
-      </Link>
+        <div
+          className={`delete-overlay w-full h-full bg-black/75 absolute top-0 left-0 hidden capitalize cursor-pointer ${
+            deleteCategories ? "group-hover:flex" : ""
+          } justify-center items-center text-3xl text-red-600`}
+          id={`categories-${i}`}
+          onClick={(e) => {
+            if (deleteCategories) handleDelete(e);
+          }}
+        >
+          delete
+        </div>
+        <h2 className="sub-title text-red text-3xl">{category.categoryName}</h2>
+        <Link
+          href={{
+            pathname: `/categories/${category.categoryName
+              .toLowerCase()
+              .replace(/ /g, "-")}`,
+            query: { id: category._id },
+          }}
+          key={i}
+        >
+          <a
+            className={`${
+              deleteCategories ? "hidden" : ""
+            } w-full h-full absolute top-0 left-0`}
+          ></a>
+        </Link>
+      </div>
     );
   });
 
