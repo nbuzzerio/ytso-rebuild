@@ -69,7 +69,8 @@ export default function Categories() {
   const categoriesList = categories.map((category, i) => {
     return (
       <div
-        className={`categories-wrapper relative flex flex-col items-center bg-gray gap-12 p-5 border border-black my-10 bg-white/50 transition duration-200 cursor-pointer group ${
+        key={i}
+        className={`categories-wrapper relative flex flex-col items-center bg-gray gap-12 p-5 border border-black my-10 bg-white/50 transition duration-200 cursor-pointer group rounded-2xl ${
           deleteCategories
             ? "hover:bg-black  border-2 border-red-600 hover:text-red-600 pointer-events-auto z-10"
             : ""
@@ -94,7 +95,6 @@ export default function Categories() {
               .replace(/ /g, "-")}`,
             query: { id: category._id },
           }}
-          key={i}
         >
           <a
             className={`${
@@ -107,10 +107,10 @@ export default function Categories() {
   });
 
   return (
-    <div className="bg-blue-200">
-      <main className="main min-h-[85vh]">
+    <div className="bg-blue-200 h-full">
+      <main className="main">
         <h1 className="text-7xl text-red-600 text-center py-10">Categories</h1>
-        <div className="categories-container flex flex-col items-start gap-5 px-10">
+        <div className="categories-container flex flex-col items-center lg:items-start gap-5 px-10">
           {router.pathname === "/categories" && (
             <button
               className={`delete-category transition duration-1000 p-5 rounded-2xl uppercase ${

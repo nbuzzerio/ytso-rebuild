@@ -16,8 +16,22 @@ export default function Subs() {
   useEffect(() => {
     if (!auth) router.push("/login");
 
+    const lastChannelObserver = new IntersectionObserver((channels) => {
+      const lastChannel = channels[0];
+      if (!lastChannel.isIntersecting) return;
+
+      const search = document.querySelector("#subs-search") as HTMLInputElement;
+      search.click();
+    }, {});
+
+    if (subsSearch.length > 0) {
+      lastChannelObserver.observe(
+        document.querySelector(".searchSub-wrapper:last-child")
+      );
+    }
+
     return () => {};
-  }, []);
+  }, [subsSearch]);
 
   const handleSubscribe = (e) => {
     if (
@@ -58,7 +72,7 @@ export default function Subs() {
           }
         })
         .catch((er) => console.log(er));
-    } else {}
+    }
   };
 
   const searchSubsList = subsSearch.map((sub, i) => {
@@ -92,9 +106,9 @@ export default function Subs() {
   });
 
   return (
-    <div className="bg-blue-200">
-      <main className="main min-h-[85vh]">
-        <h1 className="text-7xl text-red-600 text-center py-10">
+    <div className="bg-blue-200 min-h-full">
+      <main className="main">
+        <h1 className="text-5xl lg:text-7xl text-red-600 text-center py-10">
           Subscriptions
         </h1>
         <SubsList category={null} setCategory={null} />

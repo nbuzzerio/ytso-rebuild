@@ -54,7 +54,7 @@ const CategoriesForm: NextPage<{ categories; setCategories }> = ({
   });
 
   return (
-    <div className="form-type w-10/12 lg:w-6/12 bg-zinc-400 my-20">
+    <div className="form-type w-10/12 lg:w-6/12 bg-zinc-400 my-3 lg:my-20 rounded-2xl shadow-2xl">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col py-5 px-10"

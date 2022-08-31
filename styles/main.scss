@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+
+//header
+.text-logo {
+    text-shadow: 
+        1px 1px 1px black, 
+        2px 2px 1px black,
+        3px 3px 1px black, 
+        4px 4px 1px black,
+        4px 4px 1px black;
+}
+
 //Menu
 .menu-btn span {
     background: #000;

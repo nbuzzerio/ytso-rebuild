@@ -15,10 +15,6 @@ const SearchForm: NextPage<{ subsSearch; setSearch }> = ({
   const auth = useAuth();
   const [subsNextPageToken, setSubsNextPageToken] = useState("");
 
-  useEffect(() => {
-    return () => {};
-  }, []);
-
   function onSubmit(data) {
     fetch(
       `http://localhost:3000/api/search?q=${data.search}${
@@ -55,7 +51,7 @@ const SearchForm: NextPage<{ subsSearch; setSearch }> = ({
   });
 
   return (
-    <div className="form-type w-10/12 lg:w-6/12 bg-zinc-400 my-20">
+    <div className="form-type w-10/12 lg:w-6/12 bg-zinc-400 my-4 lg:my-20">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col py-5 px-10"
@@ -78,6 +74,7 @@ const SearchForm: NextPage<{ subsSearch; setSearch }> = ({
             type="submit"
             value="submit"
             className="my-5 p-3 bg-white hover:bg-gray-800 hover:text-white"
+            id="subs-search"
           />
           <span className="text-red-600 text-center text-sm">
             {errors["search"]?.message}

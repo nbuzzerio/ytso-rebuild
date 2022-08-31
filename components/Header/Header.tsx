@@ -70,13 +70,13 @@ function Header() {
             </Link>
           </div>
 
-          <div className="home-wrapper lg:absolute lg:w-full px-10 flex justify-center">
+          <div className="home-wrapper lg:absolute lg:w-full px-5 sm:px-10 flex justify-center">
             <Link href="/">
               <a
                 title="home"
-                className="uppercase text-4xl md:text-6xl lg:text-7xl text-black font-extrabold"
+                className="text-logo uppercase text-4xl md:text-6xl lg:text-7xl text-white font-extrabold whitespace-nowrap"
               >
-                TEXT LOGO
+                Y T S O
               </a>
             </Link>
           </div>
@@ -139,10 +139,10 @@ function Header() {
               ></div>
               <ul
                 className={
-                  "bg-gray-500 bg-cover flex flex-col justify-evenly text-right px-20 py-10 overflow-hidden h-full w-full lg:w-[56%] xl:w-5/12"
+                  "bg-white bg-cover flex flex-col justify-evenly text-right px-20 py-10 overflow-hidden h-full w-full lg:w-[56%] xl:w-5/12"
                 }
               >
-                <li className="text-green-400 text-xl xs:text-2xl lg:text-3xl pb-10 uppercase tracking-[.2rem]">
+                <li className="text-black text-xl xs:text-2xl lg:text-3xl pb-10 uppercase tracking-[.2rem]">
                   Menu
                 </li>
                 {!auth && router.pathname !== "/login" && (
@@ -163,30 +163,30 @@ function Header() {
                     </li>
                   </>
                 )}
-                <li className="uppercase tracking-[.2rem]">
+                {/* <li className="uppercase tracking-[.2rem]">
                   <Link href="/">
                     <a
-                      className="text-green-400 hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
+                      className="text-black hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
                       onClick={handleDropDown}
                     >
                       Home
                     </a>
                   </Link>
-                </li>
-                <li className="uppercase tracking-[.2rem]">
+                </li> */}
+                {/* <li className="uppercase tracking-[.2rem]">
                   <Link href="/groups">
                     <a
-                      className="text-green-400 hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
+                      className="text-black hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
                       onClick={handleDropDown}
                     >
                       Groups
                     </a>
                   </Link>
-                </li>
+                </li> */}
                 <li className="uppercase tracking-[.2rem]">
                   <Link href="/subs">
                     <a
-                      className="text-green-400 hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
+                      className="text-black hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
                       onClick={handleDropDown}
                     >
                       Subs
@@ -196,7 +196,7 @@ function Header() {
                 <li className="uppercase tracking-[.2rem]">
                   <Link href="/categories">
                     <a
-                      className="text-green-400 hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
+                      className="text-black hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
                       onClick={handleDropDown}
                     >
                       Categories

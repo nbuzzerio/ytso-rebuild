@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "set NODE_ENV=development&& nodemon server",
-    "build": "next build",
+    "build": "NODE_OPTIONS=\"--max_old_space_size=2048\" next build",
     "start": "set NODE_ENV=production&& node server",
     "build:test": "set NODE_ENV=test&& next build",
     "start:test": "set NODE_ENV=test&& node server",

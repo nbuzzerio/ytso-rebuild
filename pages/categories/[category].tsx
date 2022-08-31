@@ -153,6 +153,7 @@ export default function Category() {
             <a
               href={`https://www.youtube.com/watch?v=${video.contentDetails.videoId}`}
               target="_blank"
+              rel="noreferrer"
             >
               <h3 className="video-title text-3xl max-w-prose text-ellipsis overflow-hidden whitespace-nowrap hover:text-red-600">
                 {video.snippet.title}
@@ -161,6 +162,7 @@ export default function Category() {
             <a
               href={`https://www.youtube.com/c/${video.snippet.channelTitle}`}
               target="_blank"
+              rel="noreferrer"
             >
               <h4 className="video-channelTitle text-2xl max-w-prose text-ellipsis overflow-hidden whitespace-nowrap hover:text-red-600">
                 {video.snippet.channelTitle}
