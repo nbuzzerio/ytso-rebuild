@@ -16,13 +16,16 @@ export default function Category() {
   useEffect(() => {
     if (auth === "") router.push("/login");
 
-    fetch(`http://localhost:3000/api/categories/subs?id=${router.query.id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-auth-token": auth,
-      },
-    })
+    fetch(
+      `${window.location.origin}/api/categories/subs?id=${router.query.id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": auth,
+        },
+      }
+    )
       .then((res) => {
         if (!res.ok) console.log("Respons status: ", res.status, res);
         return res.json();
@@ -42,7 +45,7 @@ export default function Category() {
     if (category) {
       const videos = category.subs.map((sub, i) => {
         return fetch(
-          `http://localhost:3000/api/search/subVideos?channelId=${
+          `${window.location.origin}/api/search/subVideos?channelId=${
             sub.channelId
           }${false ? `&&nextPageToken=${""}` : ""}`,
           {
@@ -80,7 +83,7 @@ export default function Category() {
         category?.subs[Number(e.target.id.slice(4))]?.channelId
     )[0];
 
-    fetch(`http://localhost:3000/api/categories/sub`, {
+    fetch(`${window.location.origin}/api/categories/sub`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

@@ -44,7 +44,7 @@ export default function Subs() {
     ) {
       const sub = subsSearch[Number(e.target.id.slice(10))];
 
-      fetch(`http://localhost:3000/api/subs`, {
+      fetch(`${window.location.origin}/api/subs`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

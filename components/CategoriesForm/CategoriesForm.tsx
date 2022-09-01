@@ -19,7 +19,7 @@ const CategoriesForm: NextPage<{ categories; setCategories }> = ({
     if (
       !categories.some((category) => category.categoryName === data.category)
     ) {
-      fetch(`http://localhost:3000/api/categories`, {
+      fetch(`${window.location.origin}/api/categories`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

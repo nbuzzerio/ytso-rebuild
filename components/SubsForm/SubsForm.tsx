@@ -17,7 +17,7 @@ const SearchForm: NextPage<{ subsSearch; setSearch }> = ({
 
   function onSubmit(data) {
     fetch(
-      `http://localhost:3000/api/search?q=${data.search}${
+      `${window.location.origin}/api/search?q=${data.search}${
         subsNextPageToken ? `&&nextPageToken=${subsNextPageToken}` : ""
       }`,
       {

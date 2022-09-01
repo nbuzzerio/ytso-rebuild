@@ -26,7 +26,7 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
       (sub) => sub?.channelId === subs[Number(e.target.id.slice(4))]?.channelId
     )[0];
 
-    fetch(`http://localhost:3000/api/subs`, {
+    fetch(`${window.location.origin}/api/subs`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +54,7 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
       (sub) => sub?.channelId === subs[Number(e.target.id.slice(4))]?.channelId
     )[0];
 
-    fetch(`http://localhost:3000/api/categories`, {
+    fetch(`${window.location.origin}/api/categories`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

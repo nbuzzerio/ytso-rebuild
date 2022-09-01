@@ -14,7 +14,7 @@ export default function Categories() {
   useEffect(() => {
     if (auth === "") router.push("/login");
 
-    fetch(`http://localhost:3000/api/categories`, {
+    fetch(`${window.location.origin}/api/categories`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export default function Categories() {
         categories[Number(e.target.id.slice(11))]?.categoryName
     )[0];
 
-    fetch(`http://localhost:3000/api/categories`, {
+    fetch(`${window.location.origin}/api/categories`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

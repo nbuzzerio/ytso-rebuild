@@ -21,7 +21,7 @@ function SubsProvider({ children }: { children: React.ReactNode }) {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/subs`, {
+    fetch(`${window.location.origin}/api/subs`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
