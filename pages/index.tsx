@@ -10,9 +10,10 @@ export default function Home() {
       </Head>
 
       <main className="main">
-        <h1 className="text-6xl sm:text-7xl text-black text-center">
+        <h1 className="text-6xl sm:text-7xl text-black text-center py-2 lg:py-10">
           Youtube Subscription Organizer
         </h1>
+        <img src="/images/ytso-hero.png" alt="ytso filing cabinet" className="mx-auto"/>
       </main>
     </div>
   );
