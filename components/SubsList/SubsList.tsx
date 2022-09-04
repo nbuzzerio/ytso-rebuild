@@ -103,10 +103,10 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
         <img
           src={sub.channelThumbnails.medium}
           alt="sub thumbnail"
-          className="pointer-events-none"
+          className="pointer-events-none w-[240px] h-[240px]"
         />
         <div className="sub-info flex flex-col gap-5 pointer-events-none">
-          <h2 className="sub-title text-red text-3xl">{sub.subName}</h2>
+          <h2 className="sub-title text-red text-3xl text-center">{sub.subName}</h2>
         </div>
       </div>
     );

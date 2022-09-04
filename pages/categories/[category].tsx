@@ -11,7 +11,7 @@ export default function Category() {
   const router = useRouter();
   const [subsFeed, setSubsFeed] = useState([]);
   const [category, setCategory] = useState<CategoryInterface | null>(null);
-  const [deleteSubs, setDeleteSubs] = useState(false);
+  const [deleteSubs, setDeleteSubs] = useState(true);
 
   useEffect(() => {
     if (auth === "") router.push("/login");
@@ -129,10 +129,12 @@ export default function Category() {
         <img
           src={sub.channelThumbnails.medium}
           alt="sub thumbnail"
-          className="pointer-events-none"
+          className="pointer-events-none w-[240px] h-[240px]"
         />
         <div className="sub-info flex flex-col gap-5 pointer-events-none">
-          <h2 className="sub-title text-red text-3xl">{sub.subName}</h2>
+          <h3 className="sub-title text-red text-3xl text-center">
+            {sub.subName}
+          </h3>
         </div>
       </div>
     );
