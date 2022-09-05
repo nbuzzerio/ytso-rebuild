@@ -78,7 +78,7 @@ export default function Categories() {
       >
         <div
           className={`delete-overlay w-full h-full bg-black/75 absolute top-0 left-0 hidden capitalize cursor-pointer ${
-            deleteCategories ? "group-hover:flex" : ""
+            deleteCategories ? "group-hover:flex rounded-2xl" : ""
           } justify-center items-center text-3xl text-red-600`}
           id={`categories-${i}`}
           onClick={(e) => {
