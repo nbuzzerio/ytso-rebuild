@@ -129,7 +129,9 @@ export default function Category() {
         <img
           src={sub.channelThumbnails.medium}
           alt="sub thumbnail"
-          className="pointer-events-none w-[240px] h-[240px]"
+          className="pointer-events-none w-[240px] min-w-[240px] h-[240px]"
+          width="240px"
+          height="240px"
         />
         <div className="sub-info flex flex-col gap-5 pointer-events-none">
           <h3 className="sub-title text-red text-3xl text-center">
@@ -152,7 +154,10 @@ export default function Category() {
 
   const subFeedVidsList = subFeedVids.map((video: any, i: number) => {
     return (
-      <div className="video-wrapper flex flex-col w-full" key={i}>
+      <div
+        className="video-wrapper flex flex-col w-full md:w-10/12 max-h-screen overflow-hidden"
+        key={i}
+      >
         <div className="video-header flex justify-between w-full">
           <div className="video-titles-wrapper flex flex-col">
             <a
@@ -160,7 +165,7 @@ export default function Category() {
               target="_blank"
               rel="noreferrer"
             >
-              <h3 className="video-title text-3xl max-w-prose text-ellipsis overflow-hidden whitespace-nowrap hover:text-red-600">
+              <h3 className="video-title text-3xl max-w-[25ch] md:max-w-prose text-ellipsis overflow-hidden whitespace-nowrap hover:text-red-600">
                 {video.snippet.title}
               </h3>
             </a>
@@ -169,7 +174,7 @@ export default function Category() {
               target="_blank"
               rel="noreferrer"
             >
-              <h4 className="video-channelTitle text-2xl max-w-prose text-ellipsis overflow-hidden whitespace-nowrap hover:text-red-600">
+              <h4 className="video-channelTitle text-2xl md:max-w-prose text-ellipsis overflow-hidden whitespace-nowrap hover:text-red-600">
                 {video.snippet.channelTitle}
               </h4>
             </a>
@@ -178,35 +183,40 @@ export default function Category() {
             {new Date(video.snippet.publishedAt).toLocaleDateString()}
           </p>
         </div>
-        <img
-          src={video.snippet.thumbnails.default.url}
-          alt=""
-          className="sm:hidden cursor-pointer"
-          onClick={(e) => {
-            handleOpenVid(e, i);
-          }}
-        />
-        <img
-          src={video.snippet.thumbnails.medium.url}
-          alt=""
-          className="hidden md:block lg:hidden cursor-pointer"
-          onClick={(e) => {
-            handleOpenVid(e, i);
-          }}
-        />
-        <img
-          src={video.snippet.thumbnails.high.url}
-          alt=""
-          className="hidden lg:block cursor-pointer"
-          onClick={(e) => {
-            handleOpenVid(e, i);
-          }}
-        />
+        <div
+          className="w-full aspect-video overflow-hidden"
+          id={`thumbnail-wrapper-${i}`}
+        >
+          <img
+            src={video.snippet.thumbnails.default.url}
+            alt=""
+            className="sm:hidden w-full h-full cursor-pointer object-contain md:object-cover object-center"
+            onClick={(e) => {
+              handleOpenVid(e, i);
+            }}
+          />
+          <img
+            src={video.snippet.thumbnails.medium.url}
+            alt=""
+            className="hidden sm:block lg:hidden w-full h-full cursor-pointer object-contain md:object-cover object-center"
+            onClick={(e) => {
+              handleOpenVid(e, i);
+            }}
+          />
+          <img
+            src={video.snippet.thumbnails.high.url}
+            alt=""
+            className="hidden lg:block w-full h-full cursor-pointer object-contain md:object-cover object-center"
+            onClick={(e) => {
+              handleOpenVid(e, i);
+            }}
+          />
+        </div>
         <iframe
           src={`https://www.youtube.com/embed/${video.contentDetails.videoId}`}
           frameBorder="0"
           allowFullScreen
-          className="aspect-video hidden"
+          className="aspect-video hidden w-full h-full"
           id={`iframe-${i}`}
         ></iframe>
       </div>
@@ -214,11 +224,9 @@ export default function Category() {
   });
 
   const handleOpenVid = (e: any, i: any) => {
-    const img = e.target;
+    const imgWrapper = document.querySelector(`#thumbnail-wrapper-${i}`);
 
-    img?.classList.add("hidden");
-    img?.classList.add("md:hidden");
-    img?.classList.add("lg:hidden");
+    imgWrapper?.classList.add("hidden");
 
     const iframe = document.querySelector(`#iframe-${i}`);
     iframe?.classList.remove("hidden");
@@ -238,7 +246,7 @@ export default function Category() {
           {category?.categoryName}
         </h1>
         <hr />
-        <div className="sub-hub flex flex-col p-10">
+        <div className="sub-hub flex flex-col p-1 sm:p-10">
           <h2 className="text-center text-3xl uppercase py-3">all subs</h2>
           <SubsList category={category} setCategory={setCategory} />
           <h2 className="text-center text-3xl uppercase py-3">category subs</h2>
