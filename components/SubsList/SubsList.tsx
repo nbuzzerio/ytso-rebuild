@@ -11,6 +11,7 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
   setCategory,
 }) => {
   const [deleteSubs, setDeleteSubs] = useState(false);
+  const [showSubs, setShowSubs] = useState(false);
   const auth = useAuth();
   const subs = useSubs();
   const setSubs = useUpdateSubs();
@@ -118,16 +119,27 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
 
   return (
     <div className="subs-container flex flex-col items-start gap-5 px-10">
-      {router.pathname === "/subs" && (
-        <button
-          className={`delete-sub  transition duration-1000 p-5 rounded-2xl uppercase ${
-            deleteSubs ? " bg-black  text-red-600" : "bg-red-600  text-white "
-          } ${subs.length > 0 ? "" : "hidden"}`}
-          onClick={() => setDeleteSubs(!deleteSubs)}
-        >
-          Delete Subs
-        </button>
-      )}
+        <div className="btn-wrapper flex gap-10">
+          <button
+            className={`show-sub transition duration-1000 p-5 rounded-2xl uppercase ${
+              showSubs ? "bg-white  text-red-600" : "bg-red-600  text-white"
+            } ${subs.length > 0 ? "" : "hidden"}`}
+            onClick={() => setShowSubs(!showSubs)}
+          >
+            Show Subs
+          </button>
+          
+                {router.pathname === "/subs" && (
+          <button
+            className={`delete-sub  transition duration-1000 p-5 rounded-2xl uppercase ${
+              deleteSubs ? " bg-black  text-red-600" : "bg-red-600  text-white "
+            } ${subs.length > 0 ? "" : "hidden"}`}
+            onClick={() => setDeleteSubs(!deleteSubs)}
+          >
+            Delete Subs
+          </button>
+                )}
+        </div>
       {/* {router.pathname.includes("/categories") && (
         <button
           className={`add-sub  transition duration-1000 p-5 rounded-2xl uppercase ${
@@ -138,7 +150,7 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
           Add Subs
         </button>
       )} */}
-      <div className="subs-wrapper w-full flex gap-10 overflow-x-auto">
+      <div className={`subs-wrapper w-full h-full flex gap-10 overflow-x-auto transition-all duration-500 ${showSubs ? 'w-full h-full' : 'w-0 h-0'}`}>
         {subsList}
       </div>
     </div>

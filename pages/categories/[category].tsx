@@ -12,6 +12,7 @@ export default function Category() {
   const [subsFeed, setSubsFeed] = useState([]);
   const [category, setCategory] = useState<CategoryInterface | null>(null);
   const [deleteSubs, setDeleteSubs] = useState(true);
+  const [showSubs, setShowSubs] = useState(false);
 
   useEffect(() => {
     if (auth === "") router.push("/login");
@@ -250,7 +251,15 @@ export default function Category() {
           <h2 className="text-center text-3xl uppercase py-3">all subs</h2>
           <SubsList category={category} setCategory={setCategory} />
           <h2 className="text-center text-3xl uppercase py-3">category subs</h2>
-          <div className="subs-wrapper w-full flex gap-10 overflow-x-auto">
+          <button
+            className={`show-sub transition duration-1000 p-5 rounded-2xl uppercase ${
+              showSubs ? "bg-white  text-red-600" : "bg-red-600  text-white"
+            }`}
+            onClick={() => setShowSubs(!showSubs)}
+          >
+            Show Subs
+          </button>
+          <div className={`subs-wrapper w-full flex gap-10 overflow-x-auto transition-all duration-500 ${showSubs ? 'w-full h-full' : 'w-0 h-0'}`}>
             {categorySubList}
           </div>
           <h2 className="text-center text-5xl uppercase py-3 text-red-600">
