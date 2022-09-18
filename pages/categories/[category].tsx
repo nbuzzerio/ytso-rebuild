@@ -238,7 +238,7 @@ export default function Category() {
       <main className="main min-h-[85vh]">
         <Link href="/categories">
           <a>
-            <nav className="breadcrumbs underline p-5 hover:text-red-600 transition duration-100">
+            <nav className="breadcrumbs p-5 uppercase hover:font-extrabold text-red-600 transition duration-500 hover:underline">
               categories
             </nav>
           </a>
@@ -248,18 +248,20 @@ export default function Category() {
         </h1>
         <hr />
         <div className="sub-hub flex flex-col p-1 sm:p-10">
-          <h2 className="text-center text-3xl uppercase py-3">all subs</h2>
           <SubsList category={category} setCategory={setCategory} />
-          <h2 className="text-center text-3xl uppercase py-3">category subs</h2>
           <button
-            className={`show-sub transition duration-1000 p-5 rounded-2xl uppercase ${
+            className={`show-sub w-7/12 mx-auto transition duration-100 p-5 mb-5 rounded-2xl uppercase ${
               showSubs ? "bg-white  text-red-600" : "bg-red-600  text-white"
             }`}
             onClick={() => setShowSubs(!showSubs)}
           >
-            Show Subs
+            {showSubs ? "Hide" : "Show"} Category Subs
           </button>
-          <div className={`subs-wrapper w-full flex gap-10 overflow-x-auto transition-all duration-500 ${showSubs ? 'w-full h-full' : 'w-0 h-0'}`}>
+          <div
+            className={`subs-wrapper w-full flex gap-10 overflow-x-auto transition-all duration-500 ${
+              showSubs ? "w-full h-full" : "w-0 h-0"
+            }`}
+          >
             {categorySubList}
           </div>
           <h2 className="text-center text-5xl uppercase py-3 text-red-600">

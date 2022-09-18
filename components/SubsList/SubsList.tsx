@@ -79,7 +79,12 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
       .catch((er) => console.log(er));
   };
 
-  const subsList = subs.map((sub, i) => {
+  console.log(subs)
+  const subsList = subs.sort((a, b) => {
+    if (a.subName < b.subName) return -1
+    if (a.subName > b.subName) return 1
+    return 0
+  }).map((sub, i) => {
     return (
       <div
         className={`sub-wrapper relative flex flex-col items-center bg-gray gap-12 p-5 border border-black my-10 drop-shadow-2xl bg-white/50 transition duration-200 group ${
@@ -119,14 +124,14 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
 
   return (
     <div className="subs-container flex flex-col items-start gap-5 px-10">
-        <div className="btn-wrapper flex gap-10">
+        <div className="btn-wrapper flex gap-10 w-full">
           <button
-            className={`show-sub transition duration-1000 p-5 rounded-2xl uppercase ${
+            className={`show-sub w-8/12 mx-auto transition duration-1000 p-5 rounded-2xl uppercase ${
               showSubs ? "bg-white  text-red-600" : "bg-red-600  text-white"
             } ${subs.length > 0 ? "" : "hidden"}`}
             onClick={() => setShowSubs(!showSubs)}
           >
-            Show Subs
+            {router.pathname === "/subs" ? 'Show Subs' : 'All Subs'}
           </button>
           
                 {router.pathname === "/subs" && (
