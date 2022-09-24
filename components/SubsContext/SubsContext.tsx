@@ -21,24 +21,25 @@ function SubsProvider({ children }: { children: React.ReactNode }) {
   }
 
   useEffect(() => {
-    fetch(`${window.location.origin}/api/subs`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-auth-token": auth,
-      },
-    })
-      .then((res) => {
-        if (!res.ok) console.log("Respons status: ", res.status, res);
-        return res.json();
+    if (auth)
+      fetch(`${window.location.origin}/api/subs`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": auth,
+        },
       })
-      .then((data) => {
-        if (data.error) console.error(data.error);
-        else {
-          setSubs(data);
-        }
-      })
-      .catch((er) => console.log(er));
+        .then((res) => {
+          if (!res.ok) console.log("Respons status: ", res.status, res);
+          return res.json();
+        })
+        .then((data) => {
+          if (data.error) console.error(data.error);
+          else {
+            setSubs(data);
+          }
+        })
+        .catch((er) => console.log(er));
 
     return () => {};
   }, [auth]);
