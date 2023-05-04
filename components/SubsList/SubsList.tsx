@@ -141,7 +141,7 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
             } ${subs.length > 0 ? "" : "hidden"}`}
             onClick={() => setDeleteSubs(!deleteSubs)}
           >
-            Delete Subs
+            <img src="/images/recycling-bin-black.svg" alt="recycling bin icon" className={deleteSubs && 'invert transition duration-1000'} />
           </button>
                 )}
         </div>
