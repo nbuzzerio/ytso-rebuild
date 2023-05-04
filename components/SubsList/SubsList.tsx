@@ -79,7 +79,6 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
       .catch((er) => console.log(er));
   };
 
-  console.log(subs)
   const subsList = subs.sort((a, b) => {
     if (a.subName < b.subName) return -1
     if (a.subName > b.subName) return 1
@@ -131,7 +130,7 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
             } ${subs.length > 0 ? "" : "hidden"}`}
             onClick={() => setShowSubs(!showSubs)}
           >
-            {router.pathname === "/subs" ? 'Show Subs' : 'All Subs'}
+            {router.pathname === "/subs" ? 'Show Subs' : !showSubs ? 'Show All Subs' : 'Hide All Subs'}
           </button>
           
                 {router.pathname === "/subs" && (
@@ -155,7 +154,7 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
           Add Subs
         </button>
       )} */}
-      <div className={`subs-wrapper w-full h-full flex gap-10 overflow-x-auto transition-all duration-500 ${showSubs ? 'w-full h-full' : 'w-0 h-0'}`}>
+      <div className={`subs-wrapper w-full h-full flex gap-10 mb-10 overflow-x-auto transition-all duration-500 ${showSubs ? 'w-full h-full' : 'max-w-0 max-h-0'}`}>
         {subsList}
       </div>
     </div>
