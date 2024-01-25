@@ -60,24 +60,20 @@ function Header() {
         >
           <div className="logo-wrapper px-10 nav-item hidden lg:flex z-10">
             <Link href="/">
-              <a href="/">
                 <img
                   className="px-2 h-7 lg:h-10 cursor-pointer"
                   src="/images/logo.svg"
                   alt="logo image"
                 />
-              </a>
             </Link>
           </div>
 
           <div className="home-wrapper lg:absolute lg:w-full px-5 sm:px-10 flex justify-center">
-            <Link href="/">
-              <a
+            <Link href="/"
                 title="home"
                 className="text-logo uppercase text-4xl md:text-6xl lg:text-7xl text-white font-extrabold whitespace-nowrap"
               >
                 Y T S O
-              </a>
             </Link>
           </div>
 
@@ -85,15 +81,11 @@ function Header() {
             <div className="login-wrapper flex">
               {!auth && router.pathname !== "/login" && (
                 <>
-                  <Link href="/login">
-                    <a className="sign-in hidden md:flex bg-white shadow-inner px-3 mx-2">
+                  <Link href="/login" className="sign-in hidden md:flex bg-white shadow-inner px-3 mx-2">
                       Sign In
-                    </a>
                   </Link>
-                  <Link href="/login?signup=true">
-                    <a className="sign-in hidden md:flex bg-white shadow-inner px-3 mx-2">
+                  <Link href="/login?signup=true" className="sign-in hidden md:flex bg-white shadow-inner px-3 mx-2">
                       Sign Up
-                    </a>
                   </Link>
                 </>
               )}
@@ -148,59 +140,47 @@ function Header() {
                 {!auth && router.pathname !== "/login" && (
                   <>
                     <li onClick={handleDropDown}>
-                      <Link href="/login">
-                        <a className="sign-in md:hidden bg-white shadow-inner px-3 mx-2 w-20">
+                      <Link href="/login" className="sign-in md:hidden bg-white shadow-inner px-3 mx-2 w-20">
                           Sign In
-                        </a>
                       </Link>
                     </li>
                     <li onClick={handleDropDown}>
-                      <Link href="/login?signup=true">
-                        <a className="sign-in md:hidden bg-white shadow-inner px-3 mx-2">
+                      <Link href="/login?signup=true" className="sign-in md:hidden bg-white shadow-inner px-3 mx-2">
                           Sign Up
-                        </a>
                       </Link>
                     </li>
                   </>
                 )}
                 {/* <li className="uppercase tracking-[.2rem]">
-                  <Link href="/">
-                    <a
+                  <Link href="/" 
                       className="text-black hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
                       onClick={handleDropDown}
                     >
                       Home
-                    </a>
                   </Link>
                 </li> */}
                 {/* <li className="uppercase tracking-[.2rem]">
-                  <Link href="/groups">
-                    <a
+                  <Link href="/groups" 
                       className="text-black hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
                       onClick={handleDropDown}
                     >
                       Groups
-                    </a>
                   </Link>
                 </li> */}
                 <li className="uppercase tracking-[.2rem]">
-                  <Link href="/subs">
-                    <a
+                  <Link href="/subs"
                       className="text-black hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
                       onClick={handleDropDown}
                     >
                       Subs
-                    </a>
                   </Link>
                 </li>
                 <li className="uppercase tracking-[.2rem]">
-                  <Link href="/categories">
-                    <a
+                  <Link href="/categories"
                       className="text-black hover:text-red-700 text-2xl xs:text-3xl lg:text-4xl"
                       onClick={handleDropDown}
                     >
                       Categories
-                    </a>
                   </Link>
                 </li>
               </ul>

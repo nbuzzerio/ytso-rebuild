@@ -5,9 +5,14 @@ const nextConfig = {
     locales: ["en"],
     defaultLocale: "en",
   },
-  image: {
-    domains: ['https://yt3.ggpht.com/'],
-},
-}
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "yt3.ggpht.com",
+      },
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

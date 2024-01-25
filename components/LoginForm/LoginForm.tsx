@@ -58,7 +58,9 @@ const LoginForm: NextPage = () => {
           router.push("/");
         }
       })
-      .catch((er) => console.log(er));
+      .catch((er) => {console.log(er)
+        setLoginError("Server Error. Please try again later.")
+      });
   }
 
   const {

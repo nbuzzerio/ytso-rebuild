@@ -87,7 +87,7 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
     return (
       <div
         className={`sub-wrapper relative flex flex-col items-center bg-gray gap-12 p-5 border border-black my-10 drop-shadow-2xl bg-white/50 transition duration-200 group ${
-          deleteSubs || category
+          (deleteSubs || category)
             ? "hover:bg-black  border-2 border-red-600 hover:text-red-600 cursor-pointer"
             : ""
         }`}
@@ -100,7 +100,7 @@ const SubsList: NextPage<{ category: Category; setCategory: any }> = ({
       >
         <div
           className={`delete-overlay w-full h-full bg-black/75 absolute top-0 left-0 hidden capitalize cursor-pointer ${
-            deleteSubs || category ? "group-hover:flex" : ""
+            (deleteSubs || category) ? "group-hover:flex" : ""
           } justify-center items-center text-3xl text-red-600 pointer-events-none`}
         >
           {deleteSubs ? "unsubscribe" : "Subscribe"}

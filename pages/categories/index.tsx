@@ -70,9 +70,9 @@ export default function Categories() {
     return (
       <div
         key={i}
-        className={`categories-wrapper relative flex flex-col items-center bg-gray gap-12 p-5 border border-black my-10 bg-white/50 transition duration-200 cursor-pointer group rounded-2xl ${
+        className={`categories-wrapper relative flex flex-col items-center bg-gray p-5 border border-black my-2 bg-white/50 transition duration-200 cursor-pointer group rounded-2xl border-2 ${
           deleteCategories
-            ? "hover:bg-black  border-2 border-red-600 hover:text-red-600 pointer-events-auto z-10"
+            ? "hover:bg-black border-red-600 hover:text-red-600 pointer-events-auto z-10"
             : ""
         }`}
       >
@@ -95,13 +95,10 @@ export default function Categories() {
               .replace(/ /g, "-")}`,
             query: { id: category._id },
           }}
-        >
-          <a
-            className={`${
-              deleteCategories ? "hidden" : ""
-            } w-full h-full absolute top-0 left-0`}
-          ></a>
-        </Link>
+          className={`${
+            deleteCategories ? "hidden" : ""
+          } w-full h-full absolute top-0 left-0`}
+        ></Link>
       </div>
     );
   });
@@ -113,7 +110,7 @@ export default function Categories() {
         <div className="categories-container flex flex-col items-center lg:items-start gap-5 px-10">
           {router.pathname === "/categories" && (
             <button
-              className={`delete-category transition duration-1000 p-5 rounded-2xl uppercase ${
+              className={`delete-category transition duration-1000 p-5 rounded-2xl uppercase w-full md:w-auto ${
                 deleteCategories
                   ? " bg-black  text-red-600"
                   : "bg-red-600  text-white "
@@ -123,7 +120,7 @@ export default function Categories() {
               Delete Categories
             </button>
           )}
-          <div className="Categories-wrapper w-full flex gap-10 overflow-x-auto">
+          <div className="w-full flex md:gap-10 overflow-x-auto flex-col md:flex-row">
             {categoriesList}
           </div>
         </div>

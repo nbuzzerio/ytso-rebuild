@@ -237,11 +237,9 @@ export default function Category() {
     <div className="bg-blue-200">
       <main className="main min-h-[85vh]">
         <Link href="/categories">
-          <a>
             <nav className="breadcrumbs p-5 uppercase hover:font-extrabold text-red-600 transition duration-500 hover:underline">
               categories
             </nav>
-          </a>
         </Link>
         <h1 className="text-7xl text-red-600 text-center py-10">
           {category?.categoryName}
