@@ -1,39 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📺 YouTube Subscription Organizer (Rebuild)
 
-## Getting Started
+A full-stack rebuild of the original YouTube Subscription Organizer, modernized using **Next.js**, **Express**, and **TypeScript**. This application helps users visually group, manage, and explore their YouTube subscriptions by organizing channels into customizable categories.
 
-First, run the development server:
+---
+
+## 🚀 Why This Project Matters
+
+This rebuild improves performance, structure, and code clarity over the original project. It demonstrates my ability to integrate full-stack technologies, validate user data securely, and implement clean UI/UX patterns in a scalable web app. 
+
+Highlights include:
+
+- Server-side validation and routing with Express
+- Full testing coverage using **Jest** and **Cypress**
+- Dynamic UI built with **Tailwind CSS**
+- Environment variable templating for deployment flexibility
+
+---
+
+## 🧠 Features
+
+- 📂 **Channel Grouping** – Sort your subscriptions into custom folders
+- 📝 **Editable Titles & Descriptions** – Personalize each group
+- 🔍 **Search & Filter** – Quickly find and organize channels
+- 🧪 **Test Coverage** – Server and UI testing with separate scripts
+- ⚡ **Next.js Optimization** – Fast client-side routing and SSR
+
+---
+
+## ⚙️ Tech Stack
+
+| Layer      | Tools                                         |
+|------------|-----------------------------------------------|
+| Frontend   | Next.js, TypeScript, Tailwind CSS             |
+| Backend    | Node.js, Express, TypeScript                  |
+| Database   | N/A (local testing only; can be extended)     |
+| Testing    | Jest (server), Cypress (UI)                   |
+| Validation | Custom schema validation                      |
+| Deployment | Vercel-ready (includes Next.js configs)       |
+
+---
+
+## 🧪 Getting Started
+
+Clone the project and install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
+git clone https://github.com/nbuzzerio/ytso-rebuild.git
+cd ytso-rebuild
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Start the Dev Server
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 🧪 Testing
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+This app separates backend and frontend tests:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Run backend (Express) tests:
+```bash
+npm run testServer
+```
+### Run frontend (Cypress) tests:
+```bash
+npm run testUI
+```
 
-## Learn More
+## 📂 Project Structure
+```
+ytso-rebuild/
+├── components/         # Reusable UI components
+├── pages/              # Next.js routes
+├── server/             # Express backend logic
+├── database/           # Placeholder for future DB integration
+├── validations/        # Input validation schemas
+├── __tests__/          # Unit tests (Jest)
+├── cypress/            # E2E tests (Cypress)
+├── public/             # Static assets
+├── styles/             # Tailwind and global styles
+├── .env.local_template # Sample local environment variables
+└── ...
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🧑‍💻 Developer Takeaways
+This project demonstrates my ability to:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-
-
-## Testing
-Testing express server must be done separate from testing frontend UI. Please run scripts testServer and testUI, respectively.
+- 🧩 Build modern full-stack apps with **Next.js + Express**
+- 🛡️ Implement **secure validation patterns**
+- 🧪 Write **end-to-end and unit tests** across the stack
+- 📦 Manage **clean project structure and configuration**
