@@ -33,7 +33,7 @@ Highlights include:
 |------------|-----------------------------------------------|
 | Frontend   | Next.js, TypeScript, Tailwind CSS             |
 | Backend    | Node.js, Express, TypeScript                  |
-| Database   | N/A (local testing only; can be extended)     |
+| Database   | MongoDB                                       |
 | Testing    | Jest (server), Cypress (UI)                   |
 | Validation | Custom schema validation                      |
 | Deployment | Vercel-ready (includes Next.js configs)       |
